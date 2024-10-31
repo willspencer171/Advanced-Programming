@@ -181,4 +181,96 @@ x = math.sqrt(2)
 y = f"Root 2 to 2 decimal places is: {x:.2f}"
 ```
 
-OMG actual exercises now! Have a look at
+OMG actual exercises now! Have a look at [strings_and_io.ipynb](strings_and_io.ipynb).
+
+## Lesson 4: Data Structures
+
+I love love LOVE data structures I'm such a nerd for them and Python has a lot of built-in data structures. The most common one you'll likely find is the `list`. 
+
+### Lists `[]`
+
+Python data structures don't require a specific data type to comprise the list like arrays do in Java (yes, you can have mixed-type ArrayLists in Java, but not like the default `list` of Python).
+
+In Python, we declare a list using square brackets, with items separated by commas:
+
+```python
+my_list = [1, "two", True, ['inner list']]
+```
+
+and this is fine :).
+
+List types are mutable, ordered data structures, meaning the order in which you add an item is meaningful, and the structure itself can be modified after it is created.
+
+As above, lists can contain lists themselves. If the list only contains lists, it becomes a matrix (just  a name, not an actual data type). Matrices are a mathematical concept denoting n-dimensional collections. The mathematical analogue of a list, then, is a vector (mirrored in R and other languages, actually)
+
+There are some other common data structure types to consider:
+
+### Tuples `(,)`
+
+Tuples are also a type of data structure, very similar to a list. However, these are *immutable* and cannot be changed once they are declared. These are typically used to denote a construct whose item order is particularly important (think coordinates - (x, y)).
+
+In Python, we use parentheses to create a tuple, but `()` on its own doesn't suffice. A comma is needed if you want to declare an empty tuple `(,)`.
+
+```python
+coordinates = (0.45, 17)
+empty_tuple = (,)
+```
+
+### Sets `{}`
+
+These are less common in practice, but still are useful. Sets are mutable like lists, but are unordered and unindexable. This means that, essentially, a set is like a bag of marbles, where each marble is an individual but you couldn't pick one out based on its 'index'.
+
+These are very similar to mathematical sets, in that you can perform set operations on them like union, intersection, symmetric difference and more.
+
+The other defining property of a set is that each element of the set is unique - there are no duplicate objects in a set. In set theory, this is also true. Think about the set of all numbers equal to 1. That's just {1} right? Not {1, 1, 1, 1, 1...}.
+
+```python
+list_with_duplicates = [1, 1, 4, 4, 5, 5]
+set_without_duplicates = set(list_with_duplicates)
+
+# = {1, 4, 5}
+```
+
+### Dictionaries `{K: V}`
+
+Dictionaries are really cool. They're like a list, but instead of numbered indices, they're named. Each item in a dictionary is a key-value pair, represented by a tuple. Because a dictionary is made up of keys and values, both can be accessed through dictionary methods, as well as the item pairs themselves.
+
+```python
+me = {'personality': 'cool',
+      'age': 18,
+      'employable': True} # Pls someone hire me :')
+
+# Values can be accessed and updated using keys
+me['personality']
+# 'cool'
+
+me['age'] = 24 # sorry for lying before
+```
+
+### Comprehension
+
+Here's something really cool about all of these data structures: comprehension. For all of these, you can generate a data structure using a one-line iteration. Let's say I want to create a list that contains the square of all the numbers in another list:
+
+```python
+my_list = [1, 2, 3, 4]
+
+my_comp_list = [num**2 for num in my_list]
+# = [1, 4, 9, 16]
+```
+
+These for loops can be used in any of tuple, set or dictionary for comprehension, though dictionary is a little different as it requires key: value pairs:
+
+```python
+keys = ['name', 'age', 'skilled']
+values = ['Will', 24, True]
+
+me_dict = {key: value for key, value in zip(keys, values)}
+
+# = {'name': 'Will', 
+# 'age': 24, 
+# 'skilled': True}
+```
+
+### Another Exercise
+
+I've got some more exercises to do, you can find them [here](data_structures.ipynb)
