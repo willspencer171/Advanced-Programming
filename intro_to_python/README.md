@@ -274,3 +274,29 @@ me_dict = {key: value for key, value in zip(keys, values)}
 ### Another Exercise
 
 I've got some more exercises to do, you can find them [here](data_structures.ipynb)
+
+## Lesson 5: Functions
+
+WHOO we love functions! Before I start this though, I'd like to say that I think there's a difference between methods and functions and that is that functions return a value or object to the line it was called in, while a method just does a thing without returns.
+
+A function, just like in maths, is an operation that can take in parameters to complete an action. In Python we declare a function thus:
+
+```python
+def myfunc(parameters):
+    do this
+    do that
+    return this
+```
+
+These are particularly useful code for reducing code redundancy and honestly, at its core, that's most of what a function does.
+
+Functions can be called from anywhere in the code, including from within functions themselves. This means that a function can also call itself, referred to as a *recursive* function.
+
+```python
+# A classic example, the fibonacci function
+def fib(n):
+    if n <= 1:
+        return n
+    else:
+        return (fib(num - 1) + fib(num - 2))
+```
