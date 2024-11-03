@@ -300,3 +300,77 @@ def fib(n):
     else:
         return (fib(num - 1) + fib(num - 2))
 ```
+
+### Variable Scope
+
+Variables are simply named data that's stored in memory. Depending on where in a script that named memory is allocated, the scope of that variable is different. In Python, there are only two scopes (compared with Java that has a few more) - local and global.
+
+Global variables are those that can be accessed from anywhere in the script, both inside code blocks like for loops and functions, and outside. Conversely, local variables are those that are declared within a code block, and only exist within the context of that code block.
+
+```python
+global_variable = "This is global."
+
+def print_vars():
+    local_variable = "This is local."
+    print(f"{global_variable} {local_variable}")
+
+print_vars()
+# This is global. This is local.
+
+print(local_variable)
+# Throws an error since local_variable is not declared
+# within the global scope
+```
+
+There's an exercise for this one!
+
+## Lesson 6: Modules and Classes
+
+Moving swiftly on to larger constructs, we have modules and classes. A module is a collection of functions and methods that have similar functionality or uses. The Java analogue of this would be a helper class.
+
+### Modules
+
+Modules can be imported in other scripts (or even modules). Take a look at [DriverForConvert.py](DriverForConvert.py) and [Converters.py](Converters.py). The Driver module imports the Converters module (and the two functions within) and acts as an interface for those two functions. Very simple, but does the job.
+
+'Dot notation' is used to access something from within the `Converters` namespace - `Converters.gramsToOunce()` (probably ought to be snake case, no?) is one of the two functions accessed through the dot accessor.
+
+### Classes
+
+This is how Python relates things back to the OOP paradigm. Everything in Python is derived from the object type. There are no primitive data types like in Java. This can cause issues to do with speed and memory usage (but there are modules like NumPy that act as a workaround by creating primitives in CPython).
+
+To create a class in Python, we use the keyword `class` (no way!) followed by the name of the class we want to create. By default, all classes inherit from the Python `object` class. Some like to explicitly state this but it is not required:
+
+```python
+class NewObject(object):
+
+# Or without explicit object inheritance
+class NewObject:
+```
+
+That's an important characterostic of OOP as a whole - inheritance. Python objects can inherit attributes from other classes by just passing the type as a parameter in the class definition statement. This superclass can then be accessed via the `super` class:
+
+```python
+class Student(Person):
+    def __init__(school):
+        super(Student, self).__init__()
+        print("I am an Iams Student")
+```
+
+Above, we've extended whatever functionality was available in the class constructor (`__init__()`) to also include a print statement. An object is only instantiated when the `__init__` function is available in the class. Without it, the class cannot be instantiated and serves only as an abstract class (or a mixin or interface, depending on the type of inheritance).
+
+Composition is another important feature of OOP. It's where a class will have another class as one of its attributes. In the case of Python, everything is a composite class since there are no primitive data types. For example:
+
+```python
+class Person(object):
+    def __init__(self, name: str, age: int, driving_license: bool):
+        self.name = name
+        self.age = age
+        self.driving_license = driving_license
+
+class DrivingSchool(object):
+    def __init__(self, name: str, students: list[Person]):
+        self.name = name
+        self.students = students
+```
+
+In each case, objects of type `str`, `int`, `bool` (which is a subclass of `int` as it is) and `list` containing `Person`s are passed as attributes of the classes `Person` and `DrivingSchool`.
