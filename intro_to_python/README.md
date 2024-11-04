@@ -374,3 +374,5 @@ class DrivingSchool(object):
 ```
 
 In each case, objects of type `str`, `int`, `bool` (which is a subclass of `int` as it is) and `list` containing `Person`s are passed as attributes of the classes `Person` and `DrivingSchool`.
+
+There's another activity for this section too!
