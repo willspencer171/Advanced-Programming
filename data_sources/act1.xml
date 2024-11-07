@@ -1,0 +1,185 @@
+<!DOCTYPE GradeData [
+    <!ELEMENT GradeData (Student*)>
+
+    <!ELEMENT Student (ID, Name, TestScores)>
+    <!ELEMENT ID (#PCDATA)>
+    <!ELEMENT Name (#PCDATA)>
+    <!ELEMENT TestScores (Subject)>
+
+    <!ELEMENT Subject (Test*)>
+
+    <!ELEMENT Test (Score)>
+    <!ELEMENT Score (#PCDATA)>
+
+    <!ATTLIST Subject subject-name CDATA #REQUIRED>
+    <!ATTLIST Test test-name CDATA #REQUIRED>
+]
+>
+
+<GradeData>
+    <Student>
+        <ID>16430122-1521</ID>
+        <Name>Pace, Camden G.</Name>
+        <TestScores>
+            <Subject subject-name="Mathematics">
+                <Test test-name="Test 1">
+                    <Score>54%</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>63%</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="English Assignment 1">
+                <Test test-name="Essay 1">
+                    <Score>C+</Score>
+                </Test>
+                <Test test-name="Essay 2">
+                    <Score>B+</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="IT">
+                <Test test-name="Activity 1">
+                    <Score>Pass</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>32%</Score>
+                </Test>
+                <Test test-name="Essay 3">
+                    <Score>C+</Score>
+                </Test>
+            </Subject>
+        </TestScores>
+    </Student>
+    <Student>
+        <ID>16470212-9851</ID>
+        <Name>Weber, Lucy X.</Name>
+        <TestScores>
+            <Subject subject-name="Mathematics">
+                <Test test-name="Test 1">
+                    <Score>32%</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>41%</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="English Assignment 1">
+                <Test test-name="Essay 1">
+                    <Score>C-</Score>
+                </Test>
+                <Test test-name="Essay 2">
+                    <Score>C-</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="IT">
+                <Test test-name="Activity 1">
+                    <Score>Fail</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>73%</Score>
+                </Test>
+                <Test test-name="Essay 3">
+                    <Score>D+</Score>
+                </Test>
+            </Subject>
+        </TestScores>
+    </Student>
+    <Student>
+        <ID>16060213-9990</ID>
+        <Name>Branch, Caesar A.</Name>
+        <TestScores>
+            <Subject subject-name="Mathematics">
+                <Test test-name="Test 1">
+                    <Score>73%</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>81%</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="English Assignment 1">
+                <Test test-name="Essay 1">
+                    <Score>C-</Score>
+                </Test>
+                <Test test-name="Essay 2">
+                    <Score>C+</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="IT">
+                <Test test-name="Activity 1">
+                    <Score>Pass</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>63%</Score>
+                </Test>
+                <Test test-name="Essay 3">
+                    <Score>B+</Score>
+                </Test>
+            </Subject>
+        </TestScores>
+    </Student>
+    <Student>
+        <ID>16720905-9422</ID>
+        <Name>Beck, Sarah K.</Name>
+        <TestScores>
+            <Subject subject-name="Mathematics">
+                <Test test-name="Test 1">
+                    <Score>66%</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>57%</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="English Assignment 1">
+                <Test test-name="Essay 1">
+                    <Score>C-</Score>
+                </Test>
+                <Test test-name="Essay 2">
+                    <Score>D+</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="IT">
+                <Test test-name="Activity 1">
+                    <Score>Pass</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>41%</Score>
+                </Test>
+                <Test test-name="Essay 3">
+                    <Score>C-</Score>
+                </Test>
+            </Subject>
+        </TestScores>
+    </Student>
+    <Student>
+        <ID>16471011-5884</ID>
+        <Name>Valenzuela, Daphne E.</Name>
+        <TestScores>
+            <Subject subject-name="Mathematics">
+                <Test test-name="Test 1">
+                    <Score>43%</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>45%</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="English Assignment 1">
+                <Test test-name="Essay 1">
+                    <Score>B+</Score>
+                </Test>
+                <Test test-name="Essay 2">
+                    <Score>A-</Score>
+                </Test>
+            </Subject>
+            <Subject subject-name="IT">
+                <Test test-name="Activity 1">
+                    <Score>Fail</Score>
+                </Test>
+                <Test test-name="Test 2">
+                    <Score>63%</Score>
+                </Test>
+                <Test test-name="Essay 3">
+                    <Score>C-</Score>
+                </Test>
+            </Subject>
+        </TestScores>
+    </Student>
+</GradeData>
