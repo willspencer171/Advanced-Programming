@@ -104,3 +104,81 @@ Beautiful. Mwah. Objects can contain strings, integers, real, and list objects
 This language is similar to JSON, but a little different in that it uses indentation to introduce structures to the language. I'm kinda bored so I'm not gonna talk much more about it. Specification can be found [here](https://yaml.org/spec/1.2.2/#21-collections)
 
 There's some activity stuff where I make some XML and JSON files so have a look at them I guess :)
+
+## Lesson 3: File I/O
+
+Files are how we store things in computers. This is a relatively simple concept but I'll go over some principles
+
+### Relative and Absolute Paths
+
+Because a file directory is structured like a tree, in order to get to a specific location, we must traverse the tree along a specific *path*. If you look at your file directory, you'll see the path at the top in a search bar, typically prettified with '>' characters. In practice, however, folders are separated by either `/` or `\` depending on the operating system.
+
+The path from the root of the directory to the target folder or file is called the *absolute path*. Say I want to get to a folder called "Advanced Programming", I might traverse the following absolute path to get there:
+
+```shell
+'C:\RossSpectre\Documents\Advanced Programming'
+```
+
+In contrast, the path from any given folder to another folder or file is given as the *relative path*. Let's say our current directory is set to
+
+```shell
+'C:\RossSpectre\Documents\University Work\DMTA'
+```
+
+and we want to get to
+
+```shell
+'C:\RossSpectre\Documents\Advanced Programming'
+```
+
+the relative path would be:
+
+```shell
+'..\..\Advanced Programming'
+```
+
+Where the `..` indicates 'up one level'.
+
+### Reading a File in Python
+
+This is another really simple matter. Python comes with a file opening method `open()` that allows a user to read from or write to a file.
+
+> New function `open()`!
+>
+> ```python
+> open(file, mode, buffering, encoding,
+>           errors, newline, closefd, opener):
+> ```
+>
+> Use with a `with` resource manager to ensure file is closed properly after use
+
+| Mode Flags |                       Meaning                       |
+|:---------------:|:---------------------------------------------------:|
+|       'r'       | Read Mode (Default)                                 |
+|       'w'       | Write Mode                                          |
+|       'x'       | Write if file doesn't exist<br>(Exclusive Creation) |
+|       'a'       | Append to file                                      |
+|       '+'       | Read and Write                                      |
+|       'b'       | Binary (combine with others)                        |
+|       't'       | Text (Default, combine with others)                  |
+
+When reading a file, it is important to remember the position of your file pointer. This is a place in memory that tells the program where in the file you are. If you make multiple calls to read the file (with `file.read()`), each successive call will start where the pointer was last. If you reach the end of the file and try reading again, you'll read nothing.
+
+A file is an iterator, meaning it can be passed to a for loop and be iterated over, line by line (the `newline` parameter of the call to `open` can be changed to decide where that iterator makes the cut).
+
+### Writing to a File in Python
+
+Very similarly, using the `open()` function, we can write to a file. This is where things get more complicated, however.
+
+When writing to a file, we open it in write mode, and simply pass what data we want to write to the file using `file.write()`. The thing about this is that, once you've closed the file, it overwrites the previous contents of that file if there were any to begin with.
+
+If we have the file `alphabet.txt` containing the alphabet a-z, and we write "Hello World!" to it as follows:
+
+```python
+with open('alphabet.txt', 'w') as file:
+    file.write('Hello World!')
+```
+
+Then the alphabet is completely overwritten. 
+
+Other flags like "a" and "x" are designed as alternatives. "a" will append whatever you pass to the call to write to the end of the file, like string concatenation, while "x" will prevent any writing to the file if it already exists, preventing any overwriting.
