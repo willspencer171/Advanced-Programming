@@ -319,4 +319,6 @@ Add a ? to make it ungreedy
 | `[0-7]`  | Digit from 0 to 7                       |
 | `\x`     | Group/sub-pattern number "x"            |
 
+### Escaping Escape Characters
 
+Lots of the things in the tables above use the escape character `\` to become useful, but how can we search for the escape characters in an actual string? Let's say we're searching for the literal string `'\s'`. We need to escape the escape character by using another `\` in the regex pattern to give us `'\\s'`. If we have a lot of escape characters to look for in a string literal, it can become difficult to look at. So an alternative solution is to use *raw strings*. Python strings will automatically register `\` as an escape character, but raw strings will ignore them, allowing us to pass it to the regex pattern without it being escaped: `r'\s'`
