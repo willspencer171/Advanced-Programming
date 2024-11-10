@@ -182,3 +182,53 @@ with open('alphabet.txt', 'w') as file:
 Then the alphabet is completely overwritten. 
 
 Other flags like "a" and "x" are designed as alternatives. "a" will append whatever you pass to the call to write to the end of the file, like string concatenation, while "x" will prevent any writing to the file if it already exists, preventing any overwriting.
+
+## Lesson 4: Exception Handling
+
+This is a neat one! When you come across errors in Python (or any language really), the program will notify you by raising an error, which is a kind of event or interrupt that is detected by the system. If unhandled, this will result in the program terminating early. This can be pretty disastrous in some programs, especially if your program is safety critical and/or runs round the clock like on a server. So we need to have a way of detecting that event/interrupt and handling it.
+
+### Exceptions in Python
+
+Just like all objects are derived from the `object` class, all Exceptions and Errors are derived from the `BaseException` object. Have a look at this inheritance hierarchy to show this concept
+
+![alt text](images/ExceptionHierarchy.png)
+
+Python has a specific code block that captures exception events so that they don't crash whatever system we're building
+
+### `try ... except`
+
+This code block allows us to introduce some custom functionality when we come across an exception, and prevent the program from failing. Here's a quick example of how to use it:
+
+```python
+try:
+    # Will throw an error if anything 
+    # other than an int is provided
+    u_in = int(input("Enter a number: "))
+except ValueError as e:
+    # Prints the error message, followed
+    # by "Please try again"
+    print(e + "\nPlease try again")
+```
+
+When casting between incompatible data types in Python, a `ValueError` is raised. Interestingly, with Python, we can also intentionally raise an error or exception using the `raise` keyword followed by an exception object.
+
+There are also `else` and `finally` blocks that can be appended to the end of the `try ... except` block. `else` is used to provide code if an error has not occurred, and `finally` is used for any code that has to be run regardless of an error occurring:
+
+```python
+try:
+    u_in = int(input("Enter a number: "))
+except ValueError:
+    print("Uh oh! That's no good!")
+else:
+    # No ValueError thrown
+    print("This is fine!")
+finally:
+    # Will run regardless of error being found
+    print("Thanks for your input")
+```
+
+### Assertion
+
+This is a really useful keyword for testing. The `assert` keyword essentially says "The following statement will be true" and throws an `AssertionError` if that's not the case.
+
+When writing test cases, Python modules for testing systems will catch `AssertionError`s when run.
