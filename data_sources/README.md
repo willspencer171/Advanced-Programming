@@ -179,7 +179,7 @@ with open('alphabet.txt', 'w') as file:
     file.write('Hello World!')
 ```
 
-Then the alphabet is completely overwritten. 
+Then the alphabet is completely overwritten.
 
 Other flags like "a" and "x" are designed as alternatives. "a" will append whatever you pass to the call to write to the end of the file, like string concatenation, while "x" will prevent any writing to the file if it already exists, preventing any overwriting.
 
@@ -232,3 +232,91 @@ finally:
 This is a really useful keyword for testing. The `assert` keyword essentially says "The following statement will be true" and throws an `AssertionError` if that's not the case.
 
 When writing test cases, Python modules for testing systems will catch `AssertionError`s when run.
+
+## Lesson 5: Regular Expressions (ugh)
+
+Regular expressions! Lovely jargon-filled strings that get things kinda complicated when you don't know what you're doing, and also really not that simple even if you do know what you're doing.
+
+Regular expressions are used for identifying patterns within strings. These patterns are essentially generalisations of what you'll find in text and they can be of any real format that you choose.
+
+### The Python `re` Module for Regex
+
+This module is the main interface you'll ever have with regular expressions (though many packages like `pandas` make use of regex as well). It provides classes and methods for carrying out regular expression manipulation on strings
+
+| Function   | Description                                                                                                  | Returns                     |
+|:------------:|--------------------------------------------------------------------------------------------------------------|-----------------------------|
+| `findall()`| Returns a list of all matching strings                                                                       | `list[]`                    |
+| `search()` | Returns a Match object if there is a match within the string                                                 | `Match object`              |
+| `split()`  | Returns a list of strings resulting from being split by the pattern (pattern matches are lost)               | `list[]`                    |
+| `sub()`    | Substitutes 1 to many matches with the given string                                                          | `string`                    |
+| `match()`  | Returns a match object if zero or more characters at the beginning of the string match the pattern, else `None` | `Match object`              |
+| `compile()`| Takes a regular expression and compiles it into a regular expression object                                  | `Regular Expression Object` |
+
+Here's a cheatsheet adapted from [Cheatography](https://cheatography.com/davechild/cheat-sheets/regular-expressions/)
+
+#### Anchors
+
+| Symbol | Description                                                   |
+|--------|---------------------------------------------------------------|
+| `^`    | Start of string, or start of line in multi-line pattern       |
+| `\A`   | Start of string                                              |
+| `$`    | End of string, or end of line in multi-line pattern          |
+| `\Z`   | End of string                                                |
+| `\b`   | Word boundary                                                |
+| `\B`   | Not word boundary                                            |
+| `\&lt;`| Start of word                                                |
+| `\&gt;`| End of word                                                  |
+
+#### Character Classes
+
+| Symbol | Description               |
+|--------|---------------------------|
+| `\c`   | Control character         |
+| `\s`   | White space               |
+| `\S`   | Not white space           |
+| `\d`   | Digit                     |
+| `\D`   | Not digit                 |
+| `\w`   | Word                      |
+| `\W`   | Not word                  |
+| `\x`   | Hexadecimal digit         |
+| `\O`   | Octal digit               |
+
+#### Assertions
+
+| Symbol | Description                    |
+|--------|--------------------------------|
+| `?=`   | Lookahead assertion            |
+| `?!`   | Negative lookahead             |
+| `?<=`  | Lookbehind assertion           |
+| `?!=` or `?<`| Negative lookbehind        |
+| `?>`   | Once-only Subexpression        |
+| `?()`  | Condition [if then]            |
+| `?()\|` | Condition [if then else]      |
+| `?#`   | Comment                        |
+
+#### Quantifiers
+
+| Symbol | Description | Symbol (Range) | Description (Range) |
+|--------|-------------|-----------------|---------------------|
+| `*`    | 0 or more   | `{3}`           | Exactly 3           |
+| `+`    | 1 or more   | `{3,}`          | 3 or more           |
+| `?`    | 0 or 1      | `{3,5}`         | 3, 4, or 5          |
+
+Add a ? to make it ungreedy
+
+#### Groups and Ranges
+
+| Symbol   | Description                             |
+|----------|-----------------------------------------|
+| `.`      | Any character except new line (`\n`)<br>also called a wildcard    |
+| `(a\|b)` | a or b                                  |
+| `(...)`  | Group                                   |
+| `(?:...)`| Passive (non-capturing) group           |
+| `[abc]`  | Range (a or b or c)                     |
+| `[^abc]` | Not (a or b or c)                       |
+| `[a-q]`  | Lower case letter from a to q           |
+| `[A-Q]`  | Upper case letter from A to Q           |
+| `[0-7]`  | Digit from 0 to 7                       |
+| `\x`     | Group/sub-pattern number "x"            |
+
+
