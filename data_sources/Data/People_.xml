@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<People>
+	<students type="list">
+		<item type="dict">
+			<id type="int">897654</id>
+			<fullName type="dict">
+				<title type="str">Mrs</title>
+				<first type="str">Lisa</first>
+				<surname type="str">Penny</surname>
+				<other type="list">
+					<item type="str">Melanie</item>
+				</other>
+			</fullName>
+			<age type="int">32</age>
+			<city type="str">London</city>
+		</item>
+		<item type="dict">
+			<id type="int">786789</id>
+			<fullName type="dict">
+				<title type="str">Mr</title>
+				<first type="str">Lorenzo</first>
+				<surname type="str">Dubois</surname>
+				<other type="list">
+					<item type="str">Ruelle</item>
+					<item type="str">Garlen</item>
+				</other>
+			</fullName>
+			<age type="int">38</age>
+			<city type="str">Paris</city>
+		</item>
+		<item type="dict">
+			<id type="int">546854</id>
+			<fullName type="dict">
+				<title type="str">Mr</title>
+				<first type="str">Takeshi</first>
+				<surname type="str">Tanaka</surname>
+				<other type="list">
+					<item type="null"/>
+				</other>
+			</fullName>
+			<age type="int">25</age>
+			<city type="str">Tokyo</city>
+		</item>
+		<item type="dict">
+			<id type="int">238751</id>
+			<fullName type="dict">
+				<title type="str">Mr</title>
+				<first type="str">Tanveer</first>
+				<surname type="str">Patel</surname>
+				<other type="list">
+					<item type="str">Vihaan</item>
+				</other>
+			</fullName>
+			<age type="int">27</age>
+			<city type="str">Mumbai</city>
+		</item>
+		<item type="dict">
+			<id type="int">894573</id>
+			<fullName type="dict">
+				<title type="str">Miss</title>
+				<first type="str">Iolanda</first>
+				<surname type="str">Melo</surname>
+				<other type="list">
+					<item type="str">Bianca</item>
+				</other>
+			</fullName>
+			<age type="int">23</age>
+			<city type="str">Lisbon</city>
+		</item>
+	</students>
+</People>

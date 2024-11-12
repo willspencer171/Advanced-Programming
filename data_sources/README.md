@@ -322,3 +322,82 @@ Add a ? to make it ungreedy
 ### Escaping Escape Characters
 
 Lots of the things in the tables above use the escape character `\` to become useful, but how can we search for the escape characters in an actual string? Let's say we're searching for the literal string `'\s'`. We need to escape the escape character by using another `\` in the regex pattern to give us `'\\s'`. If we have a lot of escape characters to look for in a string literal, it can become difficult to look at. So an alternative solution is to use *raw strings*. Python strings will automatically register `\` as an escape character, but raw strings will ignore them, allowing us to pass it to the regex pattern without it being escaped: `r'\s'`
+
+## Lesson 6: Parsing Data
+
+Parsing is a process that we undertake to create a data structure that's compatible with whatever program we're using. In the case of a CSV file, parsing it produces a 2D matrix that can be indexed through to obtain data. In the case of XML (and XML-related languagues like HTML), because the data are nested within each other in tags that are designated by < and >, as well as attributes that look like `attribute_name = value`. Needless to say things can be a little more complex. However the general structure for a parsed XML file tends to be a tree.
+
+### The `csv` Module
+
+Python comes built-in with a [CSV parsing API](https://docs.python.org/3.6/library/csv.html) that makes reading and writing CSV files easier, with some options available like quotechars and dialects. This makes CSV file handling really simple, especially when it comes to quoted values like names (e.g. `"Spectre, Ross A."`) that you don't want to split by the delimiter.
+
+The module offers `reader`, `writer`, `DictReader` and `DictWriter` objects that are used to handle reading and writing of CSV files into either a list matrix or an `OrderedDict` object, which is just a dictionary, but the keys are in a fixed order that can be manipulated (standard dictionaries function more like sets and are not numerically indexable)
+
+It also provides a `Sniffer` object which is useful for determining the dialect of a CSV file :)
+
+### XML Parsing Modules
+
+XML is a complicated one since it includes other features like DTD and tags and nested objects. There are two main ways of parsing XML documents: Document Object Model (DOM) and Simple API for XML (SAX).
+
+DOM parsing is familiar to anyone who's worked in JavaScript. This model loads the entire XML document into memory and stores it as a tree structure. In Python, this can be done using the `xml.etree.ElementTree` API. This method is pretty intensive on the memory of the computer, particularly when it comes to large documents, and it can be quite slow at times because of this. It does have the advantage that you can traverse the tree in any direction, and it is both read and write. On the other hand, the `xml.sax` API works in an event-based manner that only loads a certain portion of the entire document into memory. This makes it less memory intensive, but also means traversal through the document is a little different.
+
+### JSON Files also have a parsing module!
+
+The `json` module is useful for reading and writing JSON files using `.dump()` and `.load()` methods.
+
+### The activity
+
+Ngl I didn't enjoy the activity for this one. I think I was overcomplicating it and trying to find a way of building an XML or JSON file recursively (and I'm not great at recursion) and it kinda didn't go great. Maybe I should undo the undo. Oh no. I saved it. And I didn't do any commits with that file :'( OOPSIES
+
+## Lesson 7: Databases
+
+I'll try and make this a quick one since there's only one page on it and I'm writing this on Tuesday of next week so :)
+
+### Types of Database
+
+When it comes to the organisation of data and storing it in a way that is both logical and effective, there are three main ways of creating a database:
+
+- Relational Databases
+  - A set of Tables and the relationships between them
+- Object-Oriented Databases
+  - A Collection of Objects with hierarchical structure (inheritance)
+- Document-Oriented Databases
+  - A Collection of Documents, each of which can contain different structures
+
+### Relational Databases (the common one)
+
+Tables are used to represent objects and the relationships between them. Tables are linked together through the use of keys (primary and foreign). Primary keys are the unique identifier of any instance of a table, and foreign keys are the primary keys of another table that is associated with a table
+
+Relational Databases are navigable through the use of SQL (Structured Query Language), which queries the database and returns values based on those queries
+
+Some Database management packages that use relational databases (and SQL) are:
+
+- [PostgreSQL](https://www.postgresql.org/)
+- [MySQL](https://www.mysql.com/)
+- [SQLite](https://www.sqlite.org/index.html)
+
+[Here's](https://realpython.com/python-sql-libraries/#understanding-the-database-schema) a good tutorial on how to use any of the above database management systems to create a relational database using Python and SQL.
+
+### Document Oriented Databases
+
+These are a little less common, but becoming more popular since SQL is considered cumbersome, and JSON (the file format adopted by these DBMSs) is becoming a more popular format. These are also referred to as NoSQL databases because we can deserialise JSON files and use them just like dictionaries, which is neat.
+
+Some NoSQL packages available in Python include:
+
+- [MongoDB](https://www.mongodb.com/)
+- [CouchDB](http://couchdb.apache.org/) (Apache)
+- [Couchbase](https://www.couchbase.com)
+
+#### MongoDB
+
+Mongo is very popular, and Mongo documents follow a similar syntax to JSON files (minus the root node). Everything within a Mongo document is either a value, or an embedded document. Embedded documents are analogous to nested objects in a JSON file.
+
+MongoDB has a simple structure. The database can have many collections, which can have many documents up to 16MB in size each:
+
+![alt text](images/MongoDBStructure.png)
+
+Think of a collection as a type, and a document as an instance of that type
+
+##### `PyMongoDB` API
+
+Once you've created a Mongo DB (following the instructions on their page), you can access your database through the Python API, or through the native command line interface. I think it's interesting that a database needs to be hosted on a computer to be accessed, but that's how it works.
