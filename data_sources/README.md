@@ -403,3 +403,7 @@ Think of a collection as a type, and a document as an instance of that type
 Once you've created a Mongo DB (following the instructions on their page), you can access your database through the Python API, or through the native command line interface. I think it's interesting that a database needs to be hosted on a computer to be accessed, but that's how it works.
 
 In order to use any MongoDB interface (Python, Java, C++), you need the MongoDB shell `mongosh` (I pronounce it mon-gosh like omg in French or something), which allows us to host our database for us to connect to in our Python script.
+
+## Conclusions
+
+And that's the end of that week of content! It's currently Thursday of week 3, so I'm a *little* behind schedule which isn't great, but I have a three day weekend to try and catch up so yay! Time to focus, unwind and reset me, my life and also maybe do some student rep stuff :)
