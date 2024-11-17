@@ -231,3 +231,78 @@ Is your application
 5. Desirable?
 6. Accessible?
 7. Valuable?
+
+### Interface Components
+
+Well, surely we all know what makes up an interface, we interact with them all the time! But for reference, here's a few components of the interface that we need to know about:
+
+| **UI Element**    | **Description**                                                      |
+|:--------------------:|----------------------------------------------------------------------|
+| Label             | Adding text                                                         |
+| Button            | Something to click                                                  |
+| Text Box          | Somewhere to input text                                             |
+| Radio Button      | To select one from many                                             |
+| Check Box         | To select something                                                 |
+| Table             | To present or enter information                                     |
+| Scroll Bar        | To move across/down information presented in a contained space      |
+| Menu Bar          | To provide functionality                                            |
+| Tabs              | To move between views within the same window                        |
+| Dropdown Menu        | A list of options that expands when clicked for users to select one. |
+| Tooltip              | A small popup that provides additional information when hovering over an element. |
+| Progress Bar         | Indicates the progress of a task, such as loading or file upload.  |
+| Carousel/Slider      | A rotating display of images or content, often used for galleries. |
+| Date Picker          | A UI element for selecting dates from a calendar-like interface.   |
+
+There are a few good bits of software out there for designing interface mockups and wireframes. The ones they suggest in this course are Pencil and LucidChart (again). I'm working with Pencil purely because it's downloadable software, but the better option is likely LucidChart anyway?
+
+![Wireframe](images/Wireframe.png)
+
+### Basic Design Principles
+
+Wow, lots to look into for this week's content, what a shame I'm a week behind, almost.
+
+There are 7 basic design principles that we need to adhere to:
+
+1. Proximity
+2. Similarity
+3. Continuity
+4. Closure
+5. Symmetry
+6. Figure
+7. Common Fate
+
+These design principles are kind of intuitive in their names, but I'll have a table here as well (again, everyone say thank you ChatGPT):
+
+| **Principle**          | **Description**                                                                                     |
+|-------------------------|-----------------------------------------------------------------------------------------------------|
+| Proximity              | Elements that are close to each other are perceived as a group.                                     |
+| Similarity             | Elements that are similar in shape, color, size, or texture are perceived as related or grouped.    |
+| Continuity             | The human eye follows a path or curve, creating a sense of flow between elements.                   |
+| Closure                | The mind completes incomplete shapes to perceive them as whole objects.                             |
+| Figure-Ground          | Elements are perceived as either the focus (figure) or the background (ground).                     |
+| Symmetry and Order     | The mind perceives symmetrical and orderly arrangements as stable and harmonious.                   |
+| Common Fate            | Elements that move in the same direction or at the same speed are perceived as part of a group.     |
+
+### Colour Theory
+
+Colour theory is a really important aspect of design. The University has a good presentation about it that I've got available [here](Wk3_Colour.pdf) and I think it's definitely worth looking through.
+
+Some other tools exist that help with selecting colours and colour pallettes that work well together in terms of colour theory, including [Paletton](https://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF).
+
+Have a look at this book also:
+
+[Marcus A. (2015) Patterns Within Patterns. In: HCI and User-Experience Design. Human–Computer Interaction Series. Springer, London pp. Pages 101-107](https://link-springer-com.libproxy.york.ac.uk/book/10.1007/978-1-4471-6744-0)
+
+Textbook whose 13th chapter is all about pattern recognition in HCI (Human-Computer Interface) design. Quite interesting.
+
+### User Testing your UI/X
+
+When it comes to finding out what's best for your application, nothing beats getting stakeholder feedback. Produce a testable prototype of your application and get them to tell you how they feel about it. How it runs, how it looks, whether it works like they'd expect it to. This is a good scheme to follow:
+
+![Stages of User Testing](images/UX_Testing.png)
+
+## Lesson 5: GUIs in Python - Tkinter
+
+I haven't really used this in years, but I remember in year 10 when we were learning about Python, we used Tkinter and it was the most confusing thing because I didn't know anything about OOP. And event-driven programming is seriously OOP.
+
+[TKinter](https://docs.python.org/3/library/tkinter.html) is a built-in GUI engine that comes with Python and is a wrapper for Tcl/Tk (Tool Command Language/ToolKit - pronounced "tickle"), which is a scripting language used to build GUIs from native widgets. There are also two packages available within Tkinter: [`Tkinter.tix`](https://docs.python.org/3.5/library/tkinter.tix.html?highlight=tkinter%20tix) (extra widgets not included in base Tkinter, deprecated in 3.6) and [`Tkinter.ttk`](https://docs.python.org/3/library/tkinter.ttk.html#module-tkinter.ttk) (themed widgets that set attributes in a slightly different way to standard Tkinter :))
