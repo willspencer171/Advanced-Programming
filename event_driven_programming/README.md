@@ -425,3 +425,5 @@ s.configure('Warning.TButton', background='red',
 We can provide a widget with a style by passing the style name (in this case `Warning.TButton`) to the `config()` method or class constructor
 
 For loads more info on this, have a look at [this website](https://tkdocs.com/tutorial/styles.html)
+
+Because I'm really falling behind again, I'm going to put an end to this here. The only notes to be written after this are about binding widgets to event handlers (i.e. callback methods) and other event-driven contexts. These are pretty much just server-client relationships and IoT networks. Not really all that interesting, but yeah that's that for now. Might come back to this later.
