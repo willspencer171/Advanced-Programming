@@ -303,6 +303,125 @@ When it comes to finding out what's best for your application, nothing beats get
 
 ## Lesson 5: GUIs in Python - Tkinter
 
+> See [here](https://github.com/willspencer171/starting_projects/tree/master/Learning%20Path/Real%20Python/GUIs%20in%20Python) for when I did some other GUI work in Python, using QPython instead of Tkinter. Same concepts, though
+
 I haven't really used this in years, but I remember in year 10 when we were learning about Python, we used Tkinter and it was the most confusing thing because I didn't know anything about OOP. And event-driven programming is seriously OOP.
 
-[TKinter](https://docs.python.org/3/library/tkinter.html) is a built-in GUI engine that comes with Python and is a wrapper for Tcl/Tk (Tool Command Language/ToolKit - pronounced "tickle"), which is a scripting language used to build GUIs from native widgets. There are also two packages available within Tkinter: [`Tkinter.tix`](https://docs.python.org/3.5/library/tkinter.tix.html?highlight=tkinter%20tix) (extra widgets not included in base Tkinter, deprecated in 3.6) and [`Tkinter.ttk`](https://docs.python.org/3/library/tkinter.ttk.html#module-tkinter.ttk) (themed widgets that set attributes in a slightly different way to standard Tkinter :))
+[TKinter](https://docs.python.org/3/library/tkinter.html) is a built-in GUI engine that comes with Python and is a wrapper for Tcl/Tk (Tool Command Language/ToolKit - pronounced "tickle"), which is a scripting language used to build GUIs from native widgets. There are also two packages available within Tkinter: [`Tkinter.tix`](https://docs.python.org/3.5/library/tkinter.tix.html?highlight=tkinter%20tix) (extra widgets not included in base Tkinter, deprecated in 3.6) and [`Tkinter.ttk`](https://docs.python.org/3/library/tkinter.ttk.html#module-tkinter.ttk) (themed widgets that set attributes in a slightly different way to standard Tkinter)
+
+### So How Does it Work?
+
+Tkinter works using objects. These objects are arranged in a hierarchy, with the root being, well, at the root. In Tkinter, this root is the `Tk` object. This, by default, comes with a bit of functionality, the minimise, maximise and exit buttons. This is the top-level container. Every other object that is introduced should be a descendant of this root object.
+
+```python
+from tkinter import Tk
+root = Tk()
+
+# Begin event loop (start application)
+root.mainloop()
+```
+
+Speaking of containers, most (if not all) components in Tkinter can be containers in some way. Tables are containers, frames are containers, dialogue boxes are containers. Maybe even text boxes are containers.
+
+The properties of an object in Tkinter can be modified using their respective methods. For example, if you want to modify the size of a window (or another widget), you can use `root.geometry()` with some parameters to change it. It feels very clunky to start with but since these are objects that have already been instantiated, this is how we do it. We can always create our own objects, inheriting from Tkinter classes, but this is for another time.
+
+#### Adding Components
+
+Now that we have our window, we'd like to add some stuff to it. Let's get a `Button` in there:
+
+```python
+from tkinter import Button
+
+btn1 = Button(root, text='Press me!')
+btn1.pack()
+```
+
+Let's break it down
+
+1. Import the Button object, naturally
+2. Instantiate a Button
+    1. Pass the parent `root` and
+    2. `text` keyword argument
+3. `pack()` is a layout manager type. Without this, the Button object is not *bound* to the parent object `root`
+
+I've got some example code of some other components that will be added to a window [here](example_components.ipynb)
+
+So that was kind of fun, but I still think tkinter is clunky as fuck.
+
+### Geometry Managers
+
+When it comes to layout, there are only 3 systems in place for positioning things in tkinter. This is very different to something like CSS, but some functionality available in CSS is also available in tkinter.
+
+#### `.pack()`
+
+As you may have seen in my practice code, `.pack()` is used frequently. This essentially just puts the item in the container in order with others that are bound to that container. This method aims to take up the least space possible with each widget, with some extra paramaters that can be passed to modify how much space is taken up.
+
+When `pack`ing a widget, you can pass parameters for `expand`, `fill` and `side`. `expand` determines whether the widget expands to fill all available space or not - binary value. `fill` takes `None`, `tkinter.X`, `tkinter.Y` or `tkinter.BOTH` as values, telling the packer which direction the widget will fill the remaining space, just like `expand` but with specificity. `side` determines which side of the parent object the widget packs against, taking `tkinter.TOP`, `tkinter.LEFT`, `tkinter.BOTTOM` or `tkinter.RIGHT` as values.
+
+It can be hard to visualise it, but packing just packs widgets as tightly as possible against a given wall of the container.
+
+#### `.grid()`
+
+This one I haven't touched yet. When using this, you can pass the following options:
+
+- `column`
+  - The column number the widget will occupy
+- `columnspan`
+  - The number of columns the widget will span across
+- `row`
+  - Same as above, for rows
+- `rowspan`
+  - Same as above, for rows
+- `ipadx`, `ipady`
+  - Inner padding for x and y
+- `padx`, `pady`
+  - Outer padding for x and y
+- `sticky`
+  - If the cell is larger than the widget, which direction does the widget stick to?
+  - Accepts `N`, `NW`, `W`, `SW`, `S`, `SE`, `E`, `NE` - the cardinal directions
+
+Let's consider an example:
+
+```python
+root = Tk()
+b = 0
+for i in range(6):
+    for j in range(6):
+        b += 1
+        Button(root, text=str(b)) /
+        .grid(row=i, column=j)
+
+root.mainloop()
+```
+
+Since the `.grid()` method will also try to pack things into the space it's given as small as possible, sometimes we need to consider filling up the available space. This can be done using weighted priority, passed to the `grid_(row|column)configure()` method. Using 1 for either of these will cause the rows or columns to completely (100%) fill the available space, even if that space is resized. This makes grids really useful for placing things in a **dynamically sized application**.
+
+#### `.place()`
+
+This one is nice and easy. This is like CSS/HTML's `relative` position. The `place`d widget is positioned relative to the container object, passing x and y as parameters, as well as being able to specify height and width explicitly. This provides the most control over positioning, but reduces the dynamic ability of the application.
+
+### Let's get STYLISH
+
+The `ttk` package of tkinter provides themes that can be used in your application. It is also designed to almost mimic the stylisation of CSS, whereby you create a style and apply it to an object, rather than creating a style for each individual object (like in HTML's inline `<tag style="background:'red'"`>). This is amazing, but it means we need to deal with the `Style` object from `ttk`.
+
+First things first. Every widget has a style that it uses by default. And that style is called `'TWidget'` (but replace Widget with the widget type like `'TButton'`). These are the roots of our Styles and we would do well to remember them. But when it comes to creating our own ones? Oh boy here's some stuff for you.
+
+In Tk, a widget **class** is a type of widget. Themed widgets (those found in ttk), are prepended with a `T` as above.
+
+A widget **state** allows a widget to have different styles under different conditions. The states available are `active`, `disabled`, `focus`, `pressed`, `selected`, `background`, `readonly`, `alternate`, and `invalid`, though not all of them are used by all the widgets.
+
+A widget **style** is the appearance of a widget taken on, given a specific state. This is what we're talking about here.
+
+A widget **theme** is a collection of styles.
+
+In Python, we configure a Style and give it a name by prepending an existing widget class with the name like `'Warning.TButton'`. We can configure by passing other named parameters like this:
+
+```python
+s = ttk.Style()
+s.configure('Warning.TButton', background='red', 
+             font=('helvetica', 16), foreground='green')
+```
+
+We can provide a widget with a style by passing the style name (in this case `Warning.TButton`) to the `config()` method or class constructor
+
+For loads more info on this, have a look at [this website](https://tkdocs.com/tutorial/styles.html)
