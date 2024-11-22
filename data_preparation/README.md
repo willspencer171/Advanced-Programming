@@ -272,3 +272,133 @@ $$
 In a more general sense, each element of a matrix $C$, the product of $A$ and $B$ is given as:
 
 $$c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}$$
+
+So that's how you multiply matrices. Adding them? This is really simple actually, you just add each entry, matching with the corresponding entry in the other matrix. This requires that the matrices be of the same shape:
+
+$$
+\begin{bmatrix}
+1&2&3 \\
+3&4&5
+\end{bmatrix}+
+\begin{bmatrix}
+3&6&9 \\
+7&5&2
+\end{bmatrix}
+=
+\begin{bmatrix}
+4&8&12 \\
+10&9&7
+\end{bmatrix}
+$$
+
+Subtraction works in exactly the same way, just with subtraction. It can also be thought of as addition with the negative of the second matrix $A+(-1)\cdot B$
+
+Which brings us to scalar multiplication as repeated addition. if we have a matrix $A$, we an add it repeatedly:
+
+$$A+A+A = 3A$$
+
+which is obvious, but it also allows us to use any number as a coefficient like $-1$ like in the subtraction. This is known as scalar multiplication since the coefficient is a scalar value (0-dimensional).
+
+Building on scalar multiplication, we can multiply matrices, scalars and vectors (1-dimensional) in different ways:
+
+for column and row vectors, we can multiply them in two ways - row first or column first. Try this:
+
+$$
+A =
+\begin{bmatrix}
+a & b & c
+\end{bmatrix} \quad \text{and} \quad
+B =
+\begin{bmatrix}
+\alpha \\ \beta \\ \gamma
+\end{bmatrix}
+\\\text{then} \\
+AB = a\alpha + b\beta + c\gamma
+$$
+
+However, if we reverse it to produce $BA$, the operation is still carried out in row-order so we get a matrix instead of a scalar:
+
+$$
+BA=
+\begin{bmatrix}
+a\alpha & a\beta & a\gamma \\
+b\alpha & b\beta & b\gamma \\
+c\alpha & c\beta & c\gamma
+\end{bmatrix}
+$$
+
+So, the takeaway here is that things are done in row order. With this in mind, it becomes impossible to multiply two row vectors or two column vectors, so $AA$ and $BB$ are not permitted.
+
+With row vectors and matrices, it's more or less the same as with matrix and matrix multiplication, just for one row:
+
+$$
+\text{given:}\\
+A=
+\begin{bmatrix}
+a_{11}&a_{12}&a_{13}
+\end{bmatrix}
+\quad\text{and}\quad
+B=
+\begin{bmatrix}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33}
+\end{bmatrix}\\
+
+\text{we get:}
+\begin{bmatrix}
+(a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31}) &
+(a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32}) &
+(a_{11}b_{13} + a_{12}b_{23} + a_{13}b_{33})
+\end{bmatrix}
+$$
+
+Which is kinda hard to look at but it's row vector times first column, then second, then third, with each element added. The result here is a row vector.
+
+In general, the formula for this is:
+
+$$
+\text{row vector }1\times n \text{ multiplied by matrix }n\times p
+\\
+rB=
+\begin{bmatrix}
+\sum_{k=1}^n r_k B_{k1} &
+\sum_{k=1}^n r_k B_{k2} & \cdots &
+\sum_{k=1}^n r_k B_{kp}
+\end{bmatrix}
+$$
+
+Which is a row vector of length p
+
+For column vectors, you must have the matrix first, column second. Other way round not permitted. Given a column vector size $n\times 1$ and a matrix size $m\times n$, a column vector of shape $m\times 1$ is produced:
+
+$$
+A=
+\begin{bmatrix}
+a_{11} & a_{12} &  \cdots & a_{1n}\\
+a_{21} & a_{22} &  \cdots & a_{2n}\\
+\vdots & \vdots &  \ddots & \vdots\\
+a_{m1} & a_{m2} &  \cdots & a_{mn}\\
+\end{bmatrix}
+c=
+\begin{bmatrix}
+c_1 \\ c_2 \\ \vdots \\ c_n
+\end{bmatrix}\\
+Ac=
+\begin{bmatrix}
+\sum_{k=1}^{n}a_{1k}c_k \\
+\sum_{k=1}^{n}a_{2k}c_k \\
+\vdots \\
+\sum_{k=1}^{n}a_{mk}c_k
+\end{bmatrix}
+$$
+
+So that's that :)
+
+## Lesson 1: NumPy
+
+Now, I've never explicitly looked at NumPy, but am somewhat familiar with it since pandas is built on top of it. NumPy is a pretty universal library written in C that makes use of arrays of any dimensions. NumPy is essentially **Arrays and Vectorised Computation**
+
+Most of what goes on in NumPy is arrays. Arrays come in literally all shapes and sizes. You can create a NumPy array using `array()` and passing a Python collection (like a list or dictionary) and NumPy will infer the data types (`dtype`s) and `shape` of the array that is produced. The actual object that is produced is an N-dimensional array (`ndarray`), which supports any number of dimensions - 0 to any natural number.
+
+We can create a few different types of array as well. For example, we can create ndarrays filled with zeroes or ones, or initialise an empty array (`np.zeroes(shape)`, `np.ones(shape)` and `np.empty(shape)`, where `shape` is a tuple)
