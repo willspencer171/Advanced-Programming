@@ -143,17 +143,14 @@ This can be represented in a matrix of form:
 
 $$
 \begin{bmatrix}
-x'' \\
-y''
+x'' \\\ y''
 \end{bmatrix}
 =
 \begin{bmatrix}
-A a + B c & A b + B d \\
-C a + D c & C b + D d
+A a + B c & A b + B d \\\ C a + D c & C b + D d
 \end{bmatrix}
 \begin{bmatrix}
-x \\
-y
+x \\\ y
 \end{bmatrix}
 $$
 
@@ -163,12 +160,10 @@ This 2x2 matrix is produced by multiplying 2 prior transformations: (leaving out
 
 $$
 \begin{bmatrix}
-A & B \\\
-C & D
+A & B \\\ C & D
 \end{bmatrix}
 \begin{bmatrix}
-a & b \\\
-c & d
+a & b \\\ c & d
 \end{bmatrix}
 $$
 
