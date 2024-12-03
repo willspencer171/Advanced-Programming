@@ -176,17 +176,14 @@ Here are the rules for matrix multiplication:
 
 $$
 \begin{bmatrix}
-A & B \\
-\cdots & \cdots
+A & B \\ \cdots & \cdots
 \end{bmatrix}
 \begin{bmatrix}
-a & \cdots \\
-c & \cdots
+a & \cdots \\ c & \cdots
 \end{bmatrix}
 =
 \begin{bmatrix}
-A a + B c & \cdots \\
-\cdots & \cdots
+A a + B c & \cdots \\ \cdots & \cdots
 \end{bmatrix}.
 $$
 
@@ -194,17 +191,13 @@ $$
 
 $$
 \begin{bmatrix}
-A & B \\
-\cdots & \cdots
+A & B \\ \cdots & \cdots
 \end{bmatrix}
-\begin{bmatrix}
-\cdots & b \\
-\cdots & d
+\begin{bmatrix} \cdots & b \\ \cdots & d
 \end{bmatrix}
 =
 \begin{bmatrix}
-\cdots & A b + B d \\
-\cdots & \cdots
+\cdots & A b + B d \\ \cdots & \cdots
 \end{bmatrix}.
 $$
 
@@ -234,13 +227,11 @@ $$
 C & D
 \end{bmatrix}
 \begin{bmatrix}
-\cdots & b \\
-\cdots & d
+\cdots & b \\ \cdots & d
 \end{bmatrix}
 =
 \begin{bmatrix}
-\cdots & \cdots \\
-\cdots & C b + D d
+\cdots & \cdots \\ \cdots & C b + D d
 \end{bmatrix}.
 $$
 
@@ -266,7 +257,7 @@ $$
 \begin{bmatrix}
 34 & 46 \\
 74 & 102
-\end{bmatrix}.
+\end{bmatrix}
 $$
 
 In a more general sense, each element of a matrix $C$, the product of $A$ and $B$ is given as:
@@ -312,7 +303,8 @@ B =
 \begin{bmatrix}
 \alpha \\ \beta \\ \gamma
 \end{bmatrix}
-\\\text{then} \\
+\\
+\text{then} \\
 AB = a\alpha + b\beta + c\gamma
 $$
 
@@ -337,7 +329,7 @@ A=
 \begin{bmatrix}
 a_{11}&a_{12}&a_{13}
 \end{bmatrix}
-\quad\text{and}\quad
+\quad \text{and}\quad
 B=
 \begin{bmatrix}
 b_{11} & b_{12} & b_{13} \\
