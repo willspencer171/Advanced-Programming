@@ -134,7 +134,7 @@ A matrix can be created to separate the constants from variables. Take the follo
 $$
 T_3 =
 \begin{cases}
-x'' = (A a + B c)x + (A b + B d)y \\
+x'' = (A a + B c)x + (A b + B d)y \\\
 y'' = (C a + D c)x + (C b + D d)y
 \end{cases}
 $$
@@ -163,11 +163,11 @@ This 2x2 matrix is produced by multiplying 2 prior transformations: (leaving out
 
 $$
 \begin{bmatrix}
-A & B \\
+A & B \\\
 C & D
 \end{bmatrix}
 \begin{bmatrix}
-a & b \\
+a & b \\\
 c & d
 \end{bmatrix}
 $$
@@ -176,14 +176,15 @@ Here are the rules for matrix multiplication:
 
 $$
 \begin{bmatrix}
-A & B \\ \cdots & \cdots
+A & B \\\ \cdots & \cdots
 \end{bmatrix}
 \begin{bmatrix}
-a & \cdots \\ c & \cdots
+a & \cdots \\\ c & \cdots
 \end{bmatrix}
 =
 \begin{bmatrix}
-A a + B c & \cdots \\ \cdots & \cdots
+A a + B c & \cdots \\\
+\cdots & \cdots
 \end{bmatrix}.
 $$
 
@@ -191,13 +192,16 @@ $$
 
 $$
 \begin{bmatrix}
-A & B \\ \cdots & \cdots
+A & B \\\
+\cdots & \cdots
 \end{bmatrix}
-\begin{bmatrix} \cdots & b \\ \cdots & d
+\begin{bmatrix} \cdots & b \\\
+\cdots & d
 \end{bmatrix}
 =
 \begin{bmatrix}
-\cdots & A b + B d \\ \cdots & \cdots
+\cdots & A b + B d \\\
+\cdots & \cdots
 \end{bmatrix}.
 $$
 
@@ -205,16 +209,16 @@ $$
 
 $$
 \begin{bmatrix}
-\cdots & \cdots \\
+\cdots & \cdots \\\
 C & D
 \end{bmatrix}
 \begin{bmatrix}
-a & \cdots \\
+a & \cdots \\\
 c & \cdots
 \end{bmatrix}
 =
 \begin{bmatrix}
-\cdots & \cdots \\
+\cdots & \cdots \\\
 C a + D c & \cdots
 \end{bmatrix}.
 $$
@@ -223,15 +227,17 @@ $$
 
 $$
 \begin{bmatrix}
-\cdots & \cdots \\
+\cdots & \cdots \\\
 C & D
 \end{bmatrix}
 \begin{bmatrix}
-\cdots & b \\ \cdots & d
+\cdots & b \\\
+\cdots & d
 \end{bmatrix}
 =
 \begin{bmatrix}
-\cdots & \cdots \\ \cdots & C b + D d
+\cdots & \cdots \\\
+\cdots & C b + D d
 \end{bmatrix}.
 $$
 
@@ -241,21 +247,21 @@ Let’s multiply the following matrices together:
 
 $$
 \begin{bmatrix}
-2 & 4 \\
+2 & 4 \\\
 6 & 8
 \end{bmatrix}
 \begin{bmatrix}
-3 & 5 \\
+3 & 5 \\\
 7 & 9
 \end{bmatrix}
 =
 \begin{bmatrix}
-(2 \times 3 + 4 \times 7) & (2 \times 5 + 4 \times 9) \\
+(2 \times 3 + 4 \times 7) & (2 \times 5 + 4 \times 9) \\\
 (6 \times 3 + 8 \times 7) & (6 \times 5 + 8 \times 9)
 \end{bmatrix}
 =
 \begin{bmatrix}
-34 & 46 \\
+34 & 46 \\\
 74 & 102
 \end{bmatrix}
 $$
@@ -268,16 +274,16 @@ So that's how you multiply matrices. Adding them? This is really simple actually
 
 $$
 \begin{bmatrix}
-1&2&3 \\
+1&2&3 \\\
 3&4&5
 \end{bmatrix}+
 \begin{bmatrix}
-3&6&9 \\
+3&6&9 \\\
 7&5&2
 \end{bmatrix}
 =
 \begin{bmatrix}
-4&8&12 \\
+4&8&12 \\\
 10&9&7
 \end{bmatrix}
 $$
@@ -301,10 +307,10 @@ a & b & c
 \end{bmatrix} \quad \text{and} \quad
 B =
 \begin{bmatrix}
-\alpha \\ \beta \\ \gamma
+\alpha \\\ \beta \\\ \gamma
 \end{bmatrix}
 \\
-\text{then} \\
+\text{then} \\\
 AB = a\alpha + b\beta + c\gamma
 $$
 
@@ -313,8 +319,8 @@ However, if we reverse it to produce $BA$, the operation is still carried out in
 $$
 BA=
 \begin{bmatrix}
-a\alpha & a\beta & a\gamma \\
-b\alpha & b\beta & b\gamma \\
+a\alpha & a\beta & a\gamma \\\
+b\alpha & b\beta & b\gamma \\\
 c\alpha & c\beta & c\gamma
 \end{bmatrix}
 $$
@@ -324,7 +330,7 @@ So, the takeaway here is that things are done in row order. With this in mind, i
 With row vectors and matrices, it's more or less the same as with matrix and matrix multiplication, just for one row:
 
 $$
-\text{given:}\\
+\text{given:}\\\
 A=
 \begin{bmatrix}
 a_{11}&a_{12}&a_{13}
@@ -332,10 +338,10 @@ a_{11}&a_{12}&a_{13}
 \quad \text{and}\quad
 B=
 \begin{bmatrix}
-b_{11} & b_{12} & b_{13} \\
-b_{21} & b_{22} & b_{23} \\
+b_{11} & b_{12} & b_{13} \\\
+b_{21} & b_{22} & b_{23} \\\
 b_{31} & b_{32} & b_{33}
-\end{bmatrix}\\
+\end{bmatrix}\\\
 
 \text{we get:}
 \begin{bmatrix}
@@ -351,7 +357,7 @@ In general, the formula for this is:
 
 $$
 \text{row vector }1\times n \text{ multiplied by matrix }n\times p
-\\
+\\\
 rB=
 \begin{bmatrix}
 \sum_{k=1}^n r_k B_{k1} &
@@ -367,20 +373,20 @@ For column vectors, you must have the matrix first, column second. Other way rou
 $$
 A=
 \begin{bmatrix}
-a_{11} & a_{12} &  \cdots & a_{1n}\\
-a_{21} & a_{22} &  \cdots & a_{2n}\\
-\vdots & \vdots &  \ddots & \vdots\\
-a_{m1} & a_{m2} &  \cdots & a_{mn}\\
+a_{11} & a_{12} &  \cdots & a_{1n}\\\
+a_{21} & a_{22} &  \cdots & a_{2n}\\\
+\vdots & \vdots &  \ddots & \vdots\\\
+a_{m1} & a_{m2} &  \cdots & a_{mn}\\\
 \end{bmatrix}
 c=
 \begin{bmatrix}
-c_1 \\ c_2 \\ \vdots \\ c_n
-\end{bmatrix}\\
+c_1 \\\ c_2 \\\ \vdots \\\ c_n
+\end{bmatrix}\\\
 Ac=
 \begin{bmatrix}
-\sum_{k=1}^{n}a_{1k}c_k \\
-\sum_{k=1}^{n}a_{2k}c_k \\
-\vdots \\
+\sum_{k=1}^{n}a_{1k}c_k \\\
+\sum_{k=1}^{n}a_{2k}c_k \\\
+\vdots \\\
 \sum_{k=1}^{n}a_{mk}c_k
 \end{bmatrix}
 $$
