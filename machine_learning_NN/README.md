@@ -1,4 +1,4 @@
-# Week 6: Machine Learning with Neural Networks
+# Week 7: Machine Learning with Neural Networks
 
 ## Weekly Learning Outcomes
 
