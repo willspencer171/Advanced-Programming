@@ -1,2 +1,4 @@
 Reading/
-summative/
+*.doc*
+*.pdf
+*.zip
